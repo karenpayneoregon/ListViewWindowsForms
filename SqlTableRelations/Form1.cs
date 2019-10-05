@@ -13,16 +13,27 @@ namespace SqlTableRelations
 {
     public partial class Form1 : Form
     {
-        private SqlInformation _tableInformation = new SqlInformation();
+        private readonly SqlInformation _tableInformation = new SqlInformation();
 
         public Form1()
         {
             InitializeComponent();
+
             Shown += Form1_Shown;
 
             listView1.ItemSelectionChanged += ListView1_ItemSelectionChanged;
         }
-
+        /// <summary>
+        /// Set description text box with (if present) the description for the
+        /// current column.
+        ///
+        /// Note: if (e.IsSelected) prevents a common issue with developers of
+        /// a double trigger of the ItemSelectionChanged change event where one
+        /// time the item is not the selected item even though it will be the
+        /// selected item.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ListView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             if (e.IsSelected)
@@ -37,11 +48,17 @@ namespace SqlTableRelations
             tableInformationComboBox.DataSource = new BindingSource(items, null);
             tableInformationComboBox.DisplayMember = "Key";
         }
-
+        /// <summary>
+        /// Retrieve column details for selected table
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GetInformationButton_Click(object sender, EventArgs e)
         {
             listView1.Items.Clear();
-            var detailItems = ((KeyValuePair<string, List<ServerTableItem> >)tableInformationComboBox.SelectedItem);
+
+            var detailItems = ((KeyValuePair<string, List<ServerTableItem> >)
+                tableInformationComboBox.SelectedItem);
 
             foreach (var serverTableItem in detailItems.Value)
             {
@@ -65,6 +82,9 @@ namespace SqlTableRelations
             listView1.Items[0].Selected = true;
             ActiveControl = listView1;
 
+            /*
+             * Shade alternate rows
+             */
             var index = 0;
             var shadedBackgroundColor = Color.FromArgb(240, 240, 240);
 
