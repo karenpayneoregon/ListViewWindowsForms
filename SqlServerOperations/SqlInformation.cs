@@ -13,7 +13,7 @@ namespace SqlServerOperations
     {
         public SqlInformation()
         {
-            DatabaseServer = ".\\SQLEXPRESS";
+            DatabaseServer = "KARENS-PC";
             DefaultCatalog = "NorthWindAzure3";
         }
 
@@ -29,7 +29,7 @@ namespace SqlServerOperations
 		                sysc.colorder [FieldOrder], 
 		                syst.name [DataType], 
 		                sysc.[length] [Length], 
-		                sysc.prec [Precision], 
+		                CASE WHEN sysc.prec IS NULL THEN 'NULL' ELSE CAST(sysc.prec AS VARCHAR) END [Precision],
                 CASE WHEN sysc.scale IS null THEN '-' ELSE sysc.scale END [Scale], 
                 CASE WHEN sysc.isnullable = 1 THEN 'True' ELSE 'False' END [AllowNulls], 
                 CASE WHEN sysc.[status] = 128 THEN 'True' ELSE 'False' END [Identity], 
@@ -96,7 +96,7 @@ namespace SqlServerOperations
                         FieldOrder = row.Field<short>("FieldOrder"),
                         DataType = row.Field<string>("DataType"),
                         Length = row.Field<short>("Length"),
-                        Precision = row.Field<short>("Precision"),
+                        Precision = row.Field<string>("Precision"),
                         Scale = row.Field<int>("Scale"),
                         AllowNulls = row.Field<string>("AllowNulls"),
                         Identity = row.Field<string>("Identity"),

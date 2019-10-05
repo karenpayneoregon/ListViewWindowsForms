@@ -19,8 +19,18 @@ namespace SqlTableRelations
         {
             InitializeComponent();
             Shown += Form1_Shown;
+
+            listView1.ItemSelectionChanged += ListView1_ItemSelectionChanged;
         }
 
+        private void ListView1_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            if (e.IsSelected)
+            {
+                DescriptionTextBox.Text = e.Item.Tag.ToString();
+            }
+            
+        }
         private void Form1_Shown(object sender, EventArgs e)
         {
             var items = _tableInformation.TableDependencies();
@@ -46,18 +56,24 @@ namespace SqlTableRelations
                 item.SubItems.Add(serverTableItem.PrimaryKey);
                 item.SubItems.Add(serverTableItem.ForeignKey);
                 item.SubItems.Add(serverTableItem.RelatedTable);
-                //item.SubItems.Add(serverTableItem.Description);
-            }
 
-            if (AutoSizeColumnsCheckBox.Checked)
-            {
-                listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+                item.Tag = serverTableItem.Description;
             }
-
+      
+            listView1.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             listView1.FocusedItem = listView1.Items[0];
             listView1.Items[0].Selected = true;
             ActiveControl = listView1;
+
+            var index = 0;
+            var shadedBackgroundColor = Color.FromArgb(240, 240, 240);
+
+            foreach (ListViewItem item in listView1.Items)
+            {
+                if (index++ % 2 != 1) continue;
+                item.BackColor = shadedBackgroundColor;
+                item.UseItemStyleForSubItems = true;
+            }
         }
     }
 }

@@ -43,7 +43,8 @@
             this.PrimaryKeyColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ForeignKeyColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.RelatedTableColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.AutoSizeColumnsCheckBox = new System.Windows.Forms.CheckBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.DescriptionTextBox = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,13 +59,12 @@
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.AutoSizeColumnsCheckBox);
             this.panel1.Controls.Add(this.GetInformationButton);
             this.panel1.Controls.Add(this.tableInformationComboBox);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 394);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 56);
+            this.panel1.Size = new System.Drawing.Size(744, 56);
             this.panel1.TabIndex = 1;
             // 
             // GetInformationButton
@@ -91,11 +91,10 @@
             this.PrimaryKeyColumn,
             this.ForeignKeyColumn,
             this.RelatedTableColumn});
-            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.listView1.FullRowSelect = true;
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(800, 394);
+            this.listView1.Size = new System.Drawing.Size(743, 357);
             this.listView1.TabIndex = 2;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -158,29 +157,40 @@
             this.RelatedTableColumn.Tag = "RelatedTableColumn";
             this.RelatedTableColumn.Text = "Related Table";
             // 
-            // AutoSizeColumnsCheckBox
+            // label1
             // 
-            this.AutoSizeColumnsCheckBox.AutoSize = true;
-            this.AutoSizeColumnsCheckBox.Location = new System.Drawing.Point(302, 23);
-            this.AutoSizeColumnsCheckBox.Name = "AutoSizeColumnsCheckBox";
-            this.AutoSizeColumnsCheckBox.Size = new System.Drawing.Size(69, 17);
-            this.AutoSizeColumnsCheckBox.TabIndex = 3;
-            this.AutoSizeColumnsCheckBox.Text = "Auto size";
-            this.AutoSizeColumnsCheckBox.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 366);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Description";
+            // 
+            // DescriptionTextBox
+            // 
+            this.DescriptionTextBox.BackColor = System.Drawing.Color.White;
+            this.DescriptionTextBox.Location = new System.Drawing.Point(78, 363);
+            this.DescriptionTextBox.Name = "DescriptionTextBox";
+            this.DescriptionTextBox.ReadOnly = true;
+            this.DescriptionTextBox.Size = new System.Drawing.Size(665, 20);
+            this.DescriptionTextBox.TabIndex = 4;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(744, 450);
+            this.Controls.Add(this.DescriptionTextBox);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "View table information in specific database";
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -201,7 +211,8 @@
         private System.Windows.Forms.ColumnHeader PrimaryKeyColumn;
         private System.Windows.Forms.ColumnHeader ForeignKeyColumn;
         private System.Windows.Forms.ColumnHeader RelatedTableColumn;
-        private System.Windows.Forms.CheckBox AutoSizeColumnsCheckBox;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox DescriptionTextBox;
     }
 }
 
