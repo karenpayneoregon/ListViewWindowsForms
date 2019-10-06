@@ -205,5 +205,53 @@ namespace SqlServerOperations
             return categoryList;
         }
 
+        public Supplier GetSuppliers(int pIdentifier)
+        {
+            mHasException = false;
+
+            var supplier = new Supplier();
+
+            var selectStatement = 
+                "SELECT SupplierID,CompanyName,ContactName,ContactTitle,Phone,[Address] AS Street,City,PostalCode,Country " + 
+                "FROM dbo.Suppliers " + 
+                "WHERE SupplierID = @SupplierId";
+
+
+            using (var cn = new SqlConnection() {ConnectionString = ConnectionString})
+            {
+                using (var cmd = new SqlCommand() {Connection = cn})
+                {
+                    cmd.Parameters.AddWithValue("@SupplierId", pIdentifier);
+
+                    try
+                    {
+                        cn.Open();
+                        var reader = cmd.ExecuteReader();
+                        if (reader.HasRows)
+                        {
+                            reader.Read();
+                            supplier.SupplierId = pIdentifier;
+                            supplier.CompanyName = reader.GetString(0);
+                            supplier.ContactName = reader.GetString(1);
+                            supplier.ContactTitle = reader.GetString(2);
+                            supplier.Phone = reader.GetString(3);
+                            supplier.Address = reader.GetString(4);
+                            supplier.City = reader.GetString(5);
+                            supplier.PostalCode = reader.GetString(6);
+                            supplier.Country = reader.GetString(7);
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        mHasException = true;
+                        mLastException = e;
+                    }
+                }
+            }
+
+            return supplier;
+
+        }
+
     }
 }

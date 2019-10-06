@@ -1,6 +1,6 @@
 ﻿namespace SqlServerOperations.Classes
 {
-    public class Suppliers
+    public class Supplier
     {
         public int SupplierId { get; set; }
 
