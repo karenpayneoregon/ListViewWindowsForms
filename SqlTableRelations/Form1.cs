@@ -67,7 +67,7 @@ namespace SqlTableRelations
                 item.SubItems.Add(serverTableItem.Field);
                 item.SubItems.Add(serverTableItem.DataType);
                 item.SubItems.Add(serverTableItem.Length.ToString());
-                item.SubItems.Add(serverTableItem.Precision.ToString());
+                item.SubItems.Add(serverTableItem.Precision);
                 item.SubItems.Add(serverTableItem.Scale.ToString());
                 item.SubItems.Add(serverTableItem.AllowNulls);
                 item.SubItems.Add(serverTableItem.Identity);

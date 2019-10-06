@@ -178,6 +178,10 @@ namespace BasicListViewGroupsExample
                     f.Dispose();
                 }
             }
+            else
+            {
+                MessageBox.Show("No product(s) selected");
+            }
         }
         /// <summary>
         /// Toggle HoverSelection property between tracking current item with mouse over
