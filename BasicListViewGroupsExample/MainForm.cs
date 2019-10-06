@@ -102,17 +102,6 @@ namespace BasicListViewGroupsExample
             ProductListView.ItemCheck += ProductListView_ItemCheck;
 
             GroupsComboBox.DataSource = ProductListView.Groups.Cast<ListViewGroup>().Select(lvg => lvg.Name).ToList();
-
-            for (int index = 0; index < ProductListView.Groups.Count; index++)
-            {
-                Console.WriteLine(ProductListView.Groups[index].Header);
-                for (int itemsIndex = 0; itemsIndex < ProductListView.Groups[index].Items.Count; itemsIndex++)
-                {
-                    Console.WriteLine($"   {((ProductTag)ProductListView.Groups[index].Items[itemsIndex].Tag).ProductId}");
-                }
-            }
-
-
         }
 
 
@@ -133,7 +122,11 @@ namespace BasicListViewGroupsExample
                 $"Current un-checked: product: {primaryKeys.ProductId} category: {primaryKeys.CategoryId} " + 
                     $"supplier: {primaryKeys.SupplierId}";
         }
-
+        /// <summary>
+        /// Shows how to get information for the current item on selection change
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ProductListView_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             if (e.IsSelected)
@@ -186,21 +179,51 @@ namespace BasicListViewGroupsExample
                 }
             }
         }
-
+        /// <summary>
+        /// Toggle HoverSelection property between tracking current item with mouse over
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HoverSelectionCheckBox_CheckedChanged(object sender, EventArgs e)
         {
             ProductListView.HoverSelection = HoverSelectionCheckBox.Checked;
         }
-
+        /// <summary>
+        /// Demonstration for iterating a single ListViewGroup by group name in ComboBox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GetGroupProductsButton_Click(object sender, EventArgs e)
         {
-            var specificGroup = ProductListView.Groups.Cast<ListViewGroup>().FirstOrDefault(lvg => lvg.Name == GroupsComboBox.Text);
+            var specificGroup = ProductListView.Groups.Cast<ListViewGroup>()
+                .FirstOrDefault(lvg => lvg.Name == GroupsComboBox.Text);
 
             for (int index = 0; index < specificGroup.Items.Count; index++)
             {
-                var productTag = specificGroup.Items[index].ProductTag();
-                
+                var productTag = specificGroup.Items[index].ProductTag();               
                 Console.WriteLine($"Id: {productTag.ProductId} Product: {specificGroup.Items[index].Text}");
+            }
+        }
+        /// <summary>
+        /// Example for iterating groups in the ListView to get information on products for
+        /// all groups while the click event above iterates one group of products.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void IterateListViewGroupsButton_Click(object sender, EventArgs e)
+        {
+            for (int index = 0; index < ProductListView.Groups.Count; index++)
+            {
+                Console.WriteLine(ProductListView.Groups[index].Header);
+                Console.WriteLine();
+                Console.WriteLine("Product id  Supplier id");
+                for (int itemsIndex = 0; itemsIndex < ProductListView.Groups[index].Items.Count; itemsIndex++)
+                {
+                    var keys = ProductListView.Groups[index].Items[itemsIndex].ProductTag();
+                    Console.WriteLine($"{keys.ProductId, 5} {keys.SupplierId,12}");
+                }
+
+                Console.WriteLine();
             }
         }
     }

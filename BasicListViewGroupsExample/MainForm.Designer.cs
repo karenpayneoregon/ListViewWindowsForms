@@ -41,6 +41,7 @@
             this.HoverSelectionCheckBox = new System.Windows.Forms.CheckBox();
             this.GroupsComboBox = new System.Windows.Forms.ComboBox();
             this.GetGroupProductsButton = new System.Windows.Forms.Button();
+            this.IterateListViewGroupsButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,6 +91,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.IterateListViewGroupsButton);
             this.panel1.Controls.Add(this.GetGroupProductsButton);
             this.panel1.Controls.Add(this.GroupsComboBox);
             this.panel1.Controls.Add(this.HoverSelectionCheckBox);
@@ -162,6 +164,16 @@
             this.GetGroupProductsButton.UseVisualStyleBackColor = true;
             this.GetGroupProductsButton.Click += new System.EventHandler(this.GetGroupProductsButton_Click);
             // 
+            // IterateListViewGroupsButton
+            // 
+            this.IterateListViewGroupsButton.Location = new System.Drawing.Point(495, 46);
+            this.IterateListViewGroupsButton.Name = "IterateListViewGroupsButton";
+            this.IterateListViewGroupsButton.Size = new System.Drawing.Size(124, 23);
+            this.IterateListViewGroupsButton.TabIndex = 9;
+            this.IterateListViewGroupsButton.Text = "Iterate Groups";
+            this.IterateListViewGroupsButton.UseVisualStyleBackColor = true;
+            this.IterateListViewGroupsButton.Click += new System.EventHandler(this.IterateListViewGroupsButton_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -193,6 +205,7 @@
         private System.Windows.Forms.CheckBox HoverSelectionCheckBox;
         private System.Windows.Forms.ComboBox GroupsComboBox;
         private System.Windows.Forms.Button GetGroupProductsButton;
+        private System.Windows.Forms.Button IterateListViewGroupsButton;
     }
 }
 
