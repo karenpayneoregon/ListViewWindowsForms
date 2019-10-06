@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Category.cs" />
+    <Compile Include="Classes\Contact.cs" />
     <Compile Include="Classes\Product.cs" />
     <Compile Include="Classes\ProductTag.cs" />
     <Compile Include="Classes\ServerTableItem.cs" />

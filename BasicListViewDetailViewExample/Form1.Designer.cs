@@ -28,38 +28,84 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.ExitButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ownerContactListView = new System.Windows.Forms.ListView();
+            this.CompanyName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.FirstNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.LastNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.PhoneColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.CountryColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // ExitButton
             // 
-            this.button1.Location = new System.Drawing.Point(34, 17);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ExitButton.Location = new System.Drawing.Point(479, 23);
+            this.ExitButton.Name = "ExitButton";
+            this.ExitButton.Size = new System.Drawing.Size(75, 23);
+            this.ExitButton.TabIndex = 0;
+            this.ExitButton.Text = "Exit";
+            this.ExitButton.UseVisualStyleBackColor = true;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.ExitButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 380);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(566, 70);
             this.panel1.TabIndex = 1;
             // 
+            // ownerContactListView
+            // 
+            this.ownerContactListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.CompanyName,
+            this.FirstNameColumn,
+            this.LastNameColumn,
+            this.PhoneColumn,
+            this.CountryColumn});
+            this.ownerContactListView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ownerContactListView.FullRowSelect = true;
+            this.ownerContactListView.Location = new System.Drawing.Point(0, 0);
+            this.ownerContactListView.Name = "ownerContactListView";
+            this.ownerContactListView.Size = new System.Drawing.Size(566, 380);
+            this.ownerContactListView.TabIndex = 2;
+            this.ownerContactListView.UseCompatibleStateImageBehavior = false;
+            this.ownerContactListView.View = System.Windows.Forms.View.Details;
+            // 
+            // CompanyName
+            // 
+            this.CompanyName.Text = "Company";
+            // 
+            // FirstNameColumn
+            // 
+            this.FirstNameColumn.Text = "First";
+            // 
+            // LastNameColumn
+            // 
+            this.LastNameColumn.Text = "Last";
+            // 
+            // PhoneColumn
+            // 
+            this.PhoneColumn.Text = "Phone";
+            // 
+            // CountryColumn
+            // 
+            this.CountryColumn.Text = "Country";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(566, 450);
+            this.Controls.Add(this.ownerContactListView);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Contacts -Owners";
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -67,8 +113,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ExitButton;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ListView ownerContactListView;
+        private System.Windows.Forms.ColumnHeader CompanyName;
+        private System.Windows.Forms.ColumnHeader FirstNameColumn;
+        private System.Windows.Forms.ColumnHeader LastNameColumn;
+        private System.Windows.Forms.ColumnHeader PhoneColumn;
+        private System.Windows.Forms.ColumnHeader CountryColumn;
     }
 }
 

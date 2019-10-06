@@ -205,6 +205,67 @@ namespace SqlServerOperations
             return categoryList;
         }
 
+        public List<Contact> GetOwnerContacts()
+        {
+            mHasException = false;
+            var ownerContacts = new List<Contact>();
+
+
+            var selectStatement =
+                @"
+                SELECT   Cust.CustomerIdentifier ,
+                         Cust.CompanyName ,
+                         cont.FirstName ,
+                         cont.LastName ,
+                         PT.PhoneTypeDescription ,
+                         CCD.PhoneNumber ,
+                         Countries.CountryName
+                FROM     Customers AS Cust
+                         INNER JOIN dbo.Contact AS cont ON Cust.ContactIdentifier = cont.ContactIdentifier
+                         INNER JOIN dbo.ContactContactDevices AS CCD ON cont.ContactIdentifier = CCD.ContactIdentifier
+                         INNER JOIN dbo.PhoneType AS PT ON CCD.PhoneTypeIdenitfier = PT.PhoneTypeIdenitfier
+                         INNER JOIN dbo.Countries ON Cust.CountryIdentfier = Countries.id
+                WHERE    ( Cust.ContactTypeIdentifier = 7 )
+                ORDER BY Cust.CompanyName;";
+
+
+            using (var cn = new SqlConnection() { ConnectionString = ConnectionString })
+            {
+                using (var cmd = new SqlCommand() { Connection = cn })
+                {
+                    try
+                    {
+                        cn.Open();
+
+                        cmd.CommandText = selectStatement;
+
+                        var reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            ownerContacts.Add(new Contact()
+                            {
+                                CustomerIdentifier = reader.GetInt32(0),
+                                CompanyName = reader.GetString(1),
+                                FirstName = reader.GetString(2),
+                                LastName = reader.GetString(3),
+                                PhoneTypeDescription = reader.GetString(4),
+                                PhoneNumber = reader.GetString(5),
+                                CountryName = reader.GetString(6)
+                            }) ;
+                        }
+
+                    }
+                    catch (Exception e)
+                    {
+                        mHasException = true;
+                        mLastException = e;
+                    }
+                }
+            }
+
+            return ownerContacts;
+        }
+
         public Supplier GetSuppliers(int pIdentifier)
         {
             mHasException = false;
