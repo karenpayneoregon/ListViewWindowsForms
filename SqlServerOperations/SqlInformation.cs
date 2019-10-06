@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+using SqlServerOperations.Classes;
 
 namespace SqlServerOperations
 {
@@ -109,6 +107,102 @@ namespace SqlServerOperations
             }
 
             return tableDictionary;
+        }
+
+        public List<Product> Products(int pIdentifier)
+        {
+            mHasException = false;
+
+            var productList = new List<Product>();
+
+            var selectStatement =
+                @"
+                SELECT   P.ProductID ,
+                         P.ProductName ,
+                         P.SupplierID ,
+                         S.CompanyName AS Supplier ,
+                         S.Phone ,
+                         P.CategoryID ,
+                         P.UnitPrice ,
+                         P.UnitsInStock
+                FROM     dbo.Products AS P
+                         INNER JOIN dbo.Suppliers AS S ON P.SupplierID = S.SupplierID
+                WHERE    P.CategoryID = @CategoryIdentifier
+                ORDER BY P.ProductName;";
+
+            using (var cn = new SqlConnection() {ConnectionString = ConnectionString})
+            {
+                using (var cmd = new SqlCommand() {Connection = cn})
+                {
+                    cmd.CommandText = selectStatement;
+                    cmd.Parameters.AddWithValue("@CategoryIdentifier", pIdentifier);
+
+                    try
+                    {
+                        cn.Open();
+                        var reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+
+                            productList.Add(new Product()
+                            {
+                                ProductId = reader.GetInt32(0),
+                                ProductName = reader.GetString(1),
+                                SupplierId = reader.GetInt32(2),
+                                Supplier = reader.GetString(3),
+                                Phone = reader.GetString(4),
+                                CategoryId = reader.GetInt32(5),
+                                UnitPrice = reader.GetDecimal(6),
+                                UnitsInStock = reader.GetInt16(7) //reader[7] as decimal? ?? default(decimal)
+                            });
+
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        mHasException = true;
+                        mLastException = e;
+                    }
+                }
+            }
+
+            return productList;
+        }
+
+        public List<Category> Categories()
+        {
+            mHasException = false;
+
+            var categoryList = new List<Category>();
+            var selectStatement = "SELECT CategoryID,CategoryName FROM dbo.Categories";
+
+            using (var cn = new SqlConnection() {ConnectionString = ConnectionString})
+            {
+                using (var cmd = new SqlCommand() {Connection = cn})
+                {
+                    cmd.CommandText = selectStatement;
+                    try
+                    {
+                        cn.Open();
+                        var reader = cmd.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            categoryList.Add(new Category()
+                            {
+                                CategoryId = reader.GetInt32(0),
+                                Name = reader.GetString(1)
+                            });
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        mHasException = true;
+                        mLastException = e;
+                    }
+                }
+            }
+
+            return categoryList;
         }
 
     }

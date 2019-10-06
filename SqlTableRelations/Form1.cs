@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SqlServerOperations;
+using SqlServerOperations.Classes;
 
 namespace SqlTableRelations
 {
