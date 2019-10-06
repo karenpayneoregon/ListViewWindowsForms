@@ -38,9 +38,11 @@ namespace SqlServerOperations
                 FROM [sys].[sysobjects] AS syso
                 JOIN [sys].[syscolumns] AS sysc on syso.id = sysc.id
                 LEFT JOIN [sys].[systypes] AS syst ON sysc.xtype = syst.xtype and syst.name != 'sysname'
-                LEFT JOIN [sys].[foreign_key_columns] AS fkc on syso.id = fkc.parent_object_id and sysc.colid = fkc.parent_column_id    
+                LEFT JOIN [sys].[foreign_key_columns] AS fkc on syso.id = fkc.parent_object_id and 
+                    sysc.colid = fkc.parent_column_id    
                 LEFT JOIN [sys].[objects] AS obj ON fkc.referenced_object_id = obj.[object_id]
-                LEFT JOIN [sys].[extended_properties] AS ep ON syso.id = ep.major_id and sysc.colid = ep.minor_id and ep.name = 'MS_Description'
+                LEFT JOIN [sys].[extended_properties] AS ep ON syso.id = ep.major_id and sysc.colid = 
+                    ep.minor_id and ep.name = 'MS_Description'
                 WHERE syso.type = 'U' AND  syso.name != 'sysdiagrams'
                 ORDER BY [Table], FieldOrder, Field;";
 
@@ -153,7 +155,7 @@ namespace SqlServerOperations
                                 Phone = reader.GetString(4),
                                 CategoryId = reader.GetInt32(5),
                                 UnitPrice = reader.GetDecimal(6),
-                                UnitsInStock = reader.GetInt16(7) //reader[7] as decimal? ?? default(decimal)
+                                UnitsInStock = reader.GetInt16(7) 
                             });
 
                         }
@@ -221,9 +223,12 @@ namespace SqlServerOperations
                          CCD.PhoneNumber ,
                          Countries.CountryName
                 FROM     Customers AS Cust
-                         INNER JOIN dbo.Contact AS cont ON Cust.ContactIdentifier = cont.ContactIdentifier
-                         INNER JOIN dbo.ContactContactDevices AS CCD ON cont.ContactIdentifier = CCD.ContactIdentifier
-                         INNER JOIN dbo.PhoneType AS PT ON CCD.PhoneTypeIdenitfier = PT.PhoneTypeIdenitfier
+                         INNER JOIN dbo.Contact AS cont ON Cust.ContactIdentifier = 
+                            cont.ContactIdentifier
+                         INNER JOIN dbo.ContactContactDevices AS CCD ON cont.ContactIdentifier = 
+                            CCD.ContactIdentifier
+                         INNER JOIN dbo.PhoneType AS PT ON CCD.PhoneTypeIdenitfier = 
+                            PT.PhoneTypeIdenitfier
                          INNER JOIN dbo.Countries ON Cust.CountryIdentfier = Countries.id
                 WHERE    ( Cust.ContactTypeIdentifier = 7 )
                 ORDER BY Cust.CompanyName;";

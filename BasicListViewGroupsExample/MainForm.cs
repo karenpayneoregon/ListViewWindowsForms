@@ -132,7 +132,9 @@ namespace BasicListViewGroupsExample
             if (e.IsSelected)
             {
                 var primaryKeys = e.Item.ProductTag();
-                SelectionChangedLabel.Text = $"product: {primaryKeys.ProductId} {ProductListView.Items[e.ItemIndex].Text}";
+                SelectionChangedLabel.Text = 
+                    $"product: {primaryKeys.ProductId} " + 
+                    $"{ProductListView.Items[e.ItemIndex].Text}";
             }
         }
         /// <summary>
@@ -193,7 +195,8 @@ namespace BasicListViewGroupsExample
             ProductListView.HoverSelection = HoverSelectionCheckBox.Checked;
         }
         /// <summary>
-        /// Demonstration for iterating a single ListViewGroup by group name in ComboBox
+        /// Demonstration for iterating a single ListViewGroup
+        /// by group name in ComboBox
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>

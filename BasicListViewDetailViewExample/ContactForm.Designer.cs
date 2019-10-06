@@ -1,6 +1,6 @@
 ﻿namespace BasicListViewDetailViewExample
 {
-    partial class Form1
+    partial class ContactForm
     {
         /// <summary>
         /// Required designer variable.

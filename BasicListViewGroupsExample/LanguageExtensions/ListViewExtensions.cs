@@ -9,7 +9,8 @@ namespace BasicListViewGroupsExample.LanguageExtensions
     public static class ListViewExtensions
     {
         /// <summary>
-        /// Get primary and foreign keys for a product within a ListView
+        /// Get primary and foreign keys for a product
+        /// within a ListView
         /// </summary>
         /// <param name="sender"></param>
         /// <returns></returns>

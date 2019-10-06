@@ -1,6 +1,6 @@
 ﻿## Example working with SQL-Server table definitions
 
-![Image](assets/F1.jpg)
+![Image](assets/F1B.jpg)
 
 Using a query targeting a single database displays table names in a ComboBox, select a table from the ComboBox, press a button which in turn populates a ListView with table definitions including related tables.
 

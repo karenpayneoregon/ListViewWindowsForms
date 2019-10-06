@@ -10,7 +10,7 @@
         /// Used to load listview items in ListViewJsonExampleForm
         /// </summary>
         /// <returns></returns>
-        public string[] Items()
+        public string[] ItemArray()
         {
             return new[] { ApplicationName, ApplicationVersion, ApplicationKey };
         }

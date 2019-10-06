@@ -12,9 +12,9 @@ using SqlServerOperations.Classes;
 
 namespace BasicListViewDetailViewExample
 {
-    public partial class Form1 : Form
+    public partial class ContactForm : Form
     {
-        public Form1()
+        public ContactForm()
         {
             InitializeComponent();
             Shown += Form1_Shown;
@@ -46,6 +46,7 @@ namespace BasicListViewDetailViewExample
                     });
 
             }
+
             ownerContactListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             ownerContactListView.EndUpdate();
 

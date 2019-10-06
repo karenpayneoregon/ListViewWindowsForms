@@ -16,8 +16,8 @@ namespace JsonExample
     {
         private readonly FileOperations _fileOperations = new FileOperations();
 
-        private readonly string _fileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, 
-            "applications.json");
+        private readonly string _fileName = 
+            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "applications.json");
 
         public ListViewJsonExampleForm()
         {
@@ -56,7 +56,7 @@ namespace JsonExample
              */
             foreach (var app in applicationList)
             {
-                var item = new ListViewItem(app.Items()) {Tag = app.id};
+                var item = new ListViewItem(app.ItemArray()) {Tag = app.id};
                 listView1.Items.Add(item);
             }
 
