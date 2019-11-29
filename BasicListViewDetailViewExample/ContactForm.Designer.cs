@@ -36,6 +36,7 @@
             this.LastNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PhoneColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CountryColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.RemoveSelectedButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +52,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.RemoveSelectedButton);
             this.panel1.Controls.Add(this.ExitButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 380);
@@ -95,7 +97,17 @@
             // 
             this.CountryColumn.Text = "Country";
             // 
-            // Form1
+            // RemoveSelectedButton
+            // 
+            this.RemoveSelectedButton.Location = new System.Drawing.Point(13, 25);
+            this.RemoveSelectedButton.Name = "RemoveSelectedButton";
+            this.RemoveSelectedButton.Size = new System.Drawing.Size(106, 23);
+            this.RemoveSelectedButton.TabIndex = 1;
+            this.RemoveSelectedButton.Text = "Remove selected";
+            this.RemoveSelectedButton.UseVisualStyleBackColor = true;
+            this.RemoveSelectedButton.Click += new System.EventHandler(this.RemoveSelectedButton_Click);
+            // 
+            // ContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -103,7 +115,7 @@
             this.Controls.Add(this.ownerContactListView);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "Form1";
+            this.Name = "ContactForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contacts -Owners";
             this.panel1.ResumeLayout(false);
@@ -121,6 +133,7 @@
         private System.Windows.Forms.ColumnHeader LastNameColumn;
         private System.Windows.Forms.ColumnHeader PhoneColumn;
         private System.Windows.Forms.ColumnHeader CountryColumn;
+        private System.Windows.Forms.Button RemoveSelectedButton;
     }
 }
 

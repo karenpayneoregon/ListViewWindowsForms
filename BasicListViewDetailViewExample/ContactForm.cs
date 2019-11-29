@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BasicListViewDetailViewExample.Classes;
 using SqlServerOperations;
 using SqlServerOperations.Classes;
+using static BasicListViewDetailViewExample.Classes.Dialogs;
 
 namespace BasicListViewDetailViewExample
 {
@@ -59,6 +61,43 @@ namespace BasicListViewDetailViewExample
         private void ExitButton_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        /// <summary>
+        /// Shows how to remove selected rows with a prompt.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void RemoveSelectedButton_Click(object sender, EventArgs e)
+        {
+            DeleteSelectedListViewRows();
+        }
+        /// <summary>
+        /// Used to prompt for deleting rows from button click or pressing
+        /// the DEL key.
+        /// </summary>
+        private void DeleteSelectedListViewRows()
+        {
+            var selectedRows = ownerContactListView.Items.SelectedRows();
+
+            if (Question($"Remove {selectedRows.Count} rows?"))
+            {
+                selectedRows.ForEach(listViewItem => 
+                    ownerContactListView.Items.Remove(listViewItem));
+            }
+        }
+        /// <summary>
+        /// Shows how to remove selected rows with a prompt when pressing
+        /// the DEL key.
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="keyData"></param>
+        /// <returns></returns>
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData != (Keys.Delete)) return base.ProcessCmdKey(ref msg, keyData);
+            DeleteSelectedListViewRows();
+            return true;
+
         }
     }
 }
