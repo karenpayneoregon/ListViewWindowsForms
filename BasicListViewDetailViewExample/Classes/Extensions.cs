@@ -6,6 +6,11 @@ namespace BasicListViewDetailViewExample.Classes
 {
     public static class Extensions
     {
+        /// <summary>
+        /// Provides the ability to remove selected rows in detail view.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <returns></returns>
         public static List<ListViewItem> SelectedRows(this ListView.ListViewItemCollection sender)
         {
             return sender.Cast<ListViewItem>()

@@ -97,7 +97,6 @@ namespace BasicListViewDetailViewExample
             if (keyData != (Keys.Delete)) return base.ProcessCmdKey(ref msg, keyData);
             DeleteSelectedListViewRows();
             return true;
-
         }
     }
 }
