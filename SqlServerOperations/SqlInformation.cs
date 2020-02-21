@@ -11,8 +11,8 @@ namespace SqlServerOperations
     {
         public SqlInformation()
         {
-            DatabaseServer = "KARENS-PC";
-            DefaultCatalog = "NorthWindAzure3";
+            DatabaseServer = ".\\SQLEXPRESS";
+            DefaultCatalog = "NorthWindAzure2";
         }
 
         public Dictionary<string, List<ServerTableItem>> TableDependencies()

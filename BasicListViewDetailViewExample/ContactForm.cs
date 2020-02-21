@@ -22,13 +22,22 @@ namespace BasicListViewDetailViewExample
             Shown += Form1_Shown;
 
             ownerContactListView.MouseDoubleClick += ListView1_MouseDoubleClick;
+            ownerContactListView.SelectedIndexChanged += OwnerContactListView_SelectedIndexChanged;
 
+        }
+
+        private void OwnerContactListView_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ownerContactListView.SelectedItems.Count == 1)
+            {
+                Console.WriteLine(ownerContactListView.SelectedItems[0].Text);
+            }
+            
         }
 
         private void ListView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show(
-                $"Call {ownerContactListView.SelectedItems[0].Text} at " + 
+            MessageBox.Show($"Call {ownerContactListView.SelectedItems[0].Text} at " + 
                 $"{ownerContactListView.SelectedItems[0].SubItems[3].Text}");
         }
 
