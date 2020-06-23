@@ -107,5 +107,15 @@ namespace BasicListViewDetailViewExample
             DeleteSelectedListViewRows();
             return true;
         }
+        /// <summary>
+        /// Demo changing a item value
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void MockedEditButton_Click(object sender, EventArgs e)
+        {
+            ownerContactListView.SelectedItems[0].SubItems[3].Text =
+                ownerContactListView.SelectedItems[0].SubItems[3].Text.Replace("-", "");
+        }
     }
 }

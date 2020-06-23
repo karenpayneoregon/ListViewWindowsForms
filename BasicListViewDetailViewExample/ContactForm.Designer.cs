@@ -30,13 +30,14 @@
         {
             this.ExitButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.RemoveSelectedButton = new System.Windows.Forms.Button();
             this.ownerContactListView = new System.Windows.Forms.ListView();
             this.CompanyName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FirstNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.LastNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PhoneColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CountryColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.RemoveSelectedButton = new System.Windows.Forms.Button();
+            this.MockedEditButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,6 +53,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.MockedEditButton);
             this.panel1.Controls.Add(this.RemoveSelectedButton);
             this.panel1.Controls.Add(this.ExitButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -59,6 +61,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(566, 70);
             this.panel1.TabIndex = 1;
+            // 
+            // RemoveSelectedButton
+            // 
+            this.RemoveSelectedButton.Location = new System.Drawing.Point(13, 25);
+            this.RemoveSelectedButton.Name = "RemoveSelectedButton";
+            this.RemoveSelectedButton.Size = new System.Drawing.Size(106, 23);
+            this.RemoveSelectedButton.TabIndex = 1;
+            this.RemoveSelectedButton.Text = "Remove selected";
+            this.RemoveSelectedButton.UseVisualStyleBackColor = true;
+            this.RemoveSelectedButton.Click += new System.EventHandler(this.RemoveSelectedButton_Click);
             // 
             // ownerContactListView
             // 
@@ -70,6 +82,7 @@
             this.CountryColumn});
             this.ownerContactListView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ownerContactListView.FullRowSelect = true;
+            this.ownerContactListView.HideSelection = false;
             this.ownerContactListView.Location = new System.Drawing.Point(0, 0);
             this.ownerContactListView.Name = "ownerContactListView";
             this.ownerContactListView.Size = new System.Drawing.Size(566, 380);
@@ -97,15 +110,15 @@
             // 
             this.CountryColumn.Text = "Country";
             // 
-            // RemoveSelectedButton
+            // MockedEditButton
             // 
-            this.RemoveSelectedButton.Location = new System.Drawing.Point(13, 25);
-            this.RemoveSelectedButton.Name = "RemoveSelectedButton";
-            this.RemoveSelectedButton.Size = new System.Drawing.Size(106, 23);
-            this.RemoveSelectedButton.TabIndex = 1;
-            this.RemoveSelectedButton.Text = "Remove selected";
-            this.RemoveSelectedButton.UseVisualStyleBackColor = true;
-            this.RemoveSelectedButton.Click += new System.EventHandler(this.RemoveSelectedButton_Click);
+            this.MockedEditButton.Location = new System.Drawing.Point(136, 25);
+            this.MockedEditButton.Name = "MockedEditButton";
+            this.MockedEditButton.Size = new System.Drawing.Size(106, 23);
+            this.MockedEditButton.TabIndex = 2;
+            this.MockedEditButton.Text = "Mock edit";
+            this.MockedEditButton.UseVisualStyleBackColor = true;
+            this.MockedEditButton.Click += new System.EventHandler(this.MockedEditButton_Click);
             // 
             // ContactForm
             // 
@@ -134,6 +147,7 @@
         private System.Windows.Forms.ColumnHeader PhoneColumn;
         private System.Windows.Forms.ColumnHeader CountryColumn;
         private System.Windows.Forms.Button RemoveSelectedButton;
+        private System.Windows.Forms.Button MockedEditButton;
     }
 }
 
