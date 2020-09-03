@@ -61,10 +61,23 @@ namespace BasicListViewDetailViewExample
             ownerContactListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             ownerContactListView.EndUpdate();
 
-            ownerContactListView.FocusedItem = ownerContactListView.Items[0];
-            ownerContactListView.Items[0].Selected = true;
-            ActiveControl = ownerContactListView;
+            // this is how to select the first item
+            //ownerContactListView.FocusedItem = ownerContactListView.Items[0];
+            //ownerContactListView.Items[0].Selected = true;
 
+            /*
+             * This is a hard coded example to find an item and ensure it's visible
+             */
+            var item = ownerContactListView.FindItemWithText("Santé Gourmet");
+
+            if (item != null)
+            {
+                var index = ownerContactListView.Items.IndexOf(item);
+                ownerContactListView.Items[index].Selected = true;
+                ownerContactListView.EnsureVisible(index);
+            }
+
+            ActiveControl = ownerContactListView;
         }
 
         private void ExitButton_Click(object sender, EventArgs e)

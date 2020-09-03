@@ -30,6 +30,7 @@
         {
             this.ExitButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.MockedEditButton = new System.Windows.Forms.Button();
             this.RemoveSelectedButton = new System.Windows.Forms.Button();
             this.ownerContactListView = new System.Windows.Forms.ListView();
             this.CompanyName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -37,7 +38,6 @@
             this.LastNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PhoneColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CountryColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.MockedEditButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,10 +57,20 @@
             this.panel1.Controls.Add(this.RemoveSelectedButton);
             this.panel1.Controls.Add(this.ExitButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 380);
+            this.panel1.Location = new System.Drawing.Point(0, 245);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(566, 70);
             this.panel1.TabIndex = 1;
+            // 
+            // MockedEditButton
+            // 
+            this.MockedEditButton.Location = new System.Drawing.Point(136, 25);
+            this.MockedEditButton.Name = "MockedEditButton";
+            this.MockedEditButton.Size = new System.Drawing.Size(106, 23);
+            this.MockedEditButton.TabIndex = 2;
+            this.MockedEditButton.Text = "Mock edit";
+            this.MockedEditButton.UseVisualStyleBackColor = true;
+            this.MockedEditButton.Click += new System.EventHandler(this.MockedEditButton_Click);
             // 
             // RemoveSelectedButton
             // 
@@ -85,7 +95,7 @@
             this.ownerContactListView.HideSelection = false;
             this.ownerContactListView.Location = new System.Drawing.Point(0, 0);
             this.ownerContactListView.Name = "ownerContactListView";
-            this.ownerContactListView.Size = new System.Drawing.Size(566, 380);
+            this.ownerContactListView.Size = new System.Drawing.Size(566, 245);
             this.ownerContactListView.TabIndex = 2;
             this.ownerContactListView.UseCompatibleStateImageBehavior = false;
             this.ownerContactListView.View = System.Windows.Forms.View.Details;
@@ -110,21 +120,11 @@
             // 
             this.CountryColumn.Text = "Country";
             // 
-            // MockedEditButton
-            // 
-            this.MockedEditButton.Location = new System.Drawing.Point(136, 25);
-            this.MockedEditButton.Name = "MockedEditButton";
-            this.MockedEditButton.Size = new System.Drawing.Size(106, 23);
-            this.MockedEditButton.TabIndex = 2;
-            this.MockedEditButton.Text = "Mock edit";
-            this.MockedEditButton.UseVisualStyleBackColor = true;
-            this.MockedEditButton.Click += new System.EventHandler(this.MockedEditButton_Click);
-            // 
             // ContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(566, 450);
+            this.ClientSize = new System.Drawing.Size(566, 315);
             this.Controls.Add(this.ownerContactListView);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
