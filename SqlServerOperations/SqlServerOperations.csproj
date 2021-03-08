@@ -46,6 +46,9 @@
   <ItemGroup>
     <Compile Include="Classes\Category.cs" />
     <Compile Include="Classes\Contact.cs" />
+    <Compile Include="Classes\ContactContactDevices.cs" />
+    <Compile Include="Classes\Countries.cs" />
+    <Compile Include="Classes\PhoneType.cs" />
     <Compile Include="Classes\Product.cs" />
     <Compile Include="Classes\ProductTag.cs" />
     <Compile Include="Classes\ServerTableItem.cs" />

@@ -215,23 +215,24 @@ namespace SqlServerOperations
 
             var selectStatement =
                 @"
-                SELECT   Cust.CustomerIdentifier ,
-                         Cust.CompanyName ,
-                         cont.FirstName ,
-                         cont.LastName ,
-                         PT.PhoneTypeDescription ,
-                         CCD.PhoneNumber ,
-                         Countries.CountryName
-                FROM     Customers AS Cust
-                         INNER JOIN dbo.Contact AS cont ON Cust.ContactIdentifier = 
-                            cont.ContactIdentifier
-                         INNER JOIN dbo.ContactContactDevices AS CCD ON cont.ContactIdentifier = 
-                            CCD.ContactIdentifier
-                         INNER JOIN dbo.PhoneType AS PT ON CCD.PhoneTypeIdenitfier = 
-                            PT.PhoneTypeIdenitfier
-                         INNER JOIN dbo.Countries ON Cust.CountryIdentfier = Countries.id
-                WHERE    ( Cust.ContactTypeIdentifier = 7 )
-                ORDER BY Cust.CompanyName;";
+                    SELECT Cust.CustomerIdentifier, 
+                           Cust.CompanyName, 
+                           cont.FirstName, 
+                           cont.LastName, 
+                           PT.PhoneTypeDescription, 
+                           CCD.PhoneNumber, 
+                           Countries.CountryName, 
+                           PT.PhoneTypeIdenitfier, 
+                           Countries.id, 
+                           cont.ContactIdentifier , 
+                           CCD.Identifier
+                    FROM Customers AS Cust
+                         INNER JOIN Contact AS cont ON Cust.ContactIdentifier = cont.ContactIdentifier
+                         INNER JOIN ContactContactDevices AS CCD ON cont.ContactIdentifier = CCD.ContactIdentifier
+                         INNER JOIN PhoneType AS PT ON CCD.PhoneTypeIdenitfier = PT.PhoneTypeIdenitfier
+                         INNER JOIN Countries ON Cust.CountryIdentfier = Countries.id
+                    WHERE Cust.ContactTypeIdentifier = 7
+                    ORDER BY Cust.CompanyName;";
 
 
             using (var cn = new SqlConnection() { ConnectionString = ConnectionString })
@@ -255,7 +256,11 @@ namespace SqlServerOperations
                                 LastName = reader.GetString(3),
                                 PhoneTypeDescription = reader.GetString(4),
                                 PhoneNumber = reader.GetString(5),
-                                CountryName = reader.GetString(6)
+                                CountryName = reader.GetString(6), 
+                                PhoneTypeIdenitfier = reader.GetInt32(7), 
+                                CountryIdentifier = reader.GetInt32(8), 
+                                ContactIdentifier = reader.GetInt32(9), 
+                                ContactDeviceIdentifier = reader.GetInt32(10)
                             }) ;
                         }
 

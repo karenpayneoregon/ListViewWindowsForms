@@ -70,6 +70,7 @@
             this.MockedEditButton.TabIndex = 2;
             this.MockedEditButton.Text = "Mock edit";
             this.MockedEditButton.UseVisualStyleBackColor = true;
+            this.MockedEditButton.Visible = false;
             this.MockedEditButton.Click += new System.EventHandler(this.MockedEditButton_Click);
             // 
             // RemoveSelectedButton
@@ -80,10 +81,12 @@
             this.RemoveSelectedButton.TabIndex = 1;
             this.RemoveSelectedButton.Text = "Remove selected";
             this.RemoveSelectedButton.UseVisualStyleBackColor = true;
+            this.RemoveSelectedButton.Visible = false;
             this.RemoveSelectedButton.Click += new System.EventHandler(this.RemoveSelectedButton_Click);
             // 
             // ownerContactListView
             // 
+            this.ownerContactListView.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.ownerContactListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.CompanyName,
             this.FirstNameColumn,

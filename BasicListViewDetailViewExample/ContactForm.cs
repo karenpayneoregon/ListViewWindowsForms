@@ -22,28 +22,40 @@ namespace BasicListViewDetailViewExample
             Shown += Form1_Shown;
 
             //ownerContactListView.MouseDoubleClick += ListView1_MouseDoubleClick;
-            //ownerContactListView.SelectedIndexChanged += OwnerContactListView_SelectedIndexChanged;
-            //ownerContactListView.FullRowSelect = true;
-            //ownerContactListView.LabelEdit = false;
+            ownerContactListView.SelectedIndexChanged += OwnerContactListView_SelectedIndexChanged;
         }
 
         private void OwnerContactListView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ownerContactListView.SelectedItems.Count == 1)
+
+            try
             {
-                Console.WriteLine(ownerContactListView.SelectedItems[0].Text);
+                var index = ownerContactListView.RowIndex();
+                if (index > -1)
+                {
+                    var currentContact = (Contact)ownerContactListView.Items[index].Tag;
+                    Console.WriteLine($"Index: {index}, Data: {currentContact}");
+                }
+
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
+
             
+
         }
 
         private void ListView1_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            MessageBox.Show($"Call {ownerContactListView.SelectedItems[0].Text} at " + 
-                $"{ownerContactListView.SelectedItems[0].SubItems[3].Text}");
+            MessageBox.Show($"Call {ownerContactListView.SelectedItems[0].Text} at " + $"{ownerContactListView.SelectedItems[0].SubItems[3].Text}");
         }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
+            ownerContactListView.FullRowSelect = true;
             var dataOperations = new SqlInformation();
             var contacts = dataOperations.GetOwnerContacts();
 
@@ -91,7 +103,7 @@ namespace BasicListViewDetailViewExample
             }
             else
             {
-                Console.WriteLine($"{(Contact)ownerContactListView.Items[e.Item].Tag}, {e.Label}");
+                //Console.WriteLine($"{(Contact)ownerContactListView.Items[e.Item].Tag}, {e.Label}");
                 if (e.Label.Contains("Karen"))
                 {
                     e.CancelEdit = true;

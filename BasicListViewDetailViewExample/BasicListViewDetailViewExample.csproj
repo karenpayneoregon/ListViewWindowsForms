@@ -51,6 +51,12 @@
   <ItemGroup>
     <Compile Include="Classes\Dialogs.cs" />
     <Compile Include="Classes\Extensions.cs" />
+    <Compile Include="ContactEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContactEditorForm.Designer.cs">
+      <DependentUpon>ContactEditorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ContactForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +65,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ContactEditorForm.resx">
+      <DependentUpon>ContactEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ContactForm.resx">
       <DependentUpon>ContactForm.cs</DependentUpon>
     </EmbeddedResource>

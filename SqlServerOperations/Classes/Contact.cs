@@ -9,6 +9,10 @@
         public string PhoneTypeDescription { get; set; }
         public string PhoneNumber { get; set; }
         public string CountryName { get; set; }
+        public int PhoneTypeIdenitfier { get; set; }
+        public int CountryIdentifier { get; set; }
+        public int ContactIdentifier { get; set; }
+        public int ContactDeviceIdentifier { get; set; }
         public string[] ItemArray => new[]
         {
             CompanyName,
