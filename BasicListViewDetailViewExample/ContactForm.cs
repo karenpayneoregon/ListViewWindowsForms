@@ -21,9 +21,10 @@ namespace BasicListViewDetailViewExample
             InitializeComponent();
             Shown += Form1_Shown;
 
-            ownerContactListView.MouseDoubleClick += ListView1_MouseDoubleClick;
-            ownerContactListView.SelectedIndexChanged += OwnerContactListView_SelectedIndexChanged;
-
+            //ownerContactListView.MouseDoubleClick += ListView1_MouseDoubleClick;
+            //ownerContactListView.SelectedIndexChanged += OwnerContactListView_SelectedIndexChanged;
+            //ownerContactListView.FullRowSelect = true;
+            //ownerContactListView.LabelEdit = false;
         }
 
         private void OwnerContactListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -53,13 +54,15 @@ namespace BasicListViewDetailViewExample
                 ownerContactListView.Items.Add(
                     new ListViewItem(contact.ItemArray)
                     {
-                        Tag = contact.CustomerIdentifier
+                        Tag = contact
                     });
 
             }
 
             ownerContactListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             ownerContactListView.EndUpdate();
+
+            ownerContactListView.AfterLabelEdit += OwnerContactListViewOnAfterLabelEdit;
 
             // this is how to select the first item
             //ownerContactListView.FocusedItem = ownerContactListView.Items[0];
@@ -78,6 +81,23 @@ namespace BasicListViewDetailViewExample
             }
 
             ActiveControl = ownerContactListView;
+        }
+
+        private void OwnerContactListViewOnAfterLabelEdit(object sender, LabelEditEventArgs e)
+        {
+            if (e.Item == null)
+            {
+                return;
+            }
+            else
+            {
+                Console.WriteLine($"{(Contact)ownerContactListView.Items[e.Item].Tag}, {e.Label}");
+                if (e.Label.Contains("Karen"))
+                {
+                    e.CancelEdit = true;
+                }
+            }
+
         }
 
         private void ExitButton_Click(object sender, EventArgs e)
@@ -107,19 +127,19 @@ namespace BasicListViewDetailViewExample
                     ownerContactListView.Items.Remove(listViewItem));
             }
         }
-        /// <summary>
-        /// Shows how to remove selected rows with a prompt when pressing
-        /// the DEL key.
-        /// </summary>
-        /// <param name="msg"></param>
-        /// <param name="keyData"></param>
-        /// <returns></returns>
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            if (keyData != (Keys.Delete)) return base.ProcessCmdKey(ref msg, keyData);
-            DeleteSelectedListViewRows();
-            return true;
-        }
+        ///// <summary>
+        ///// Shows how to remove selected rows with a prompt when pressing
+        ///// the DEL key.
+        ///// </summary>
+        ///// <param name="msg"></param>
+        ///// <param name="keyData"></param>
+        ///// <returns></returns>
+        //protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        //{
+        //    if (keyData != (Keys.Delete)) return base.ProcessCmdKey(ref msg, keyData);
+        //    DeleteSelectedListViewRows();
+        //    return true;
+        //}
         /// <summary>
         /// Demo changing a item value
         /// </summary>

@@ -18,5 +18,7 @@
             CountryName
         };
 
+        public override string ToString() => $"{CustomerIdentifier} [{CompanyName}]";
+
     }
 }

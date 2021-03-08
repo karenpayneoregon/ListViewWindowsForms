@@ -91,8 +91,8 @@
             this.PhoneColumn,
             this.CountryColumn});
             this.ownerContactListView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ownerContactListView.FullRowSelect = true;
             this.ownerContactListView.HideSelection = false;
+            this.ownerContactListView.LabelEdit = true;
             this.ownerContactListView.Location = new System.Drawing.Point(0, 0);
             this.ownerContactListView.Name = "ownerContactListView";
             this.ownerContactListView.Size = new System.Drawing.Size(566, 245);
