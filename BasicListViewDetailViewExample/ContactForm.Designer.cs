@@ -86,7 +86,6 @@
             // 
             // ownerContactListView
             // 
-            this.ownerContactListView.Activation = System.Windows.Forms.ItemActivation.OneClick;
             this.ownerContactListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.CompanyName,
             this.FirstNameColumn,

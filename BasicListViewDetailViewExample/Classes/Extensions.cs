@@ -20,11 +20,15 @@ namespace BasicListViewDetailViewExample.Classes
                 .Select(listViewItem => listViewItem)
                 .ToList();
         }
-
+        /// <summary>
+        /// Get current row index
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <returns>Current row index value or -1 if no current row</returns>
         public static int RowIndex(this ListView sender)
         {
-            var ssssssssssss = sender.SelectedIndices.Count;
-            if (ssssssssssss == 0)
+            var count = sender.SelectedIndices.Count;
+            if (count == 0)
             {
                 return -1;
             }
@@ -33,19 +37,19 @@ namespace BasicListViewDetailViewExample.Classes
                 return sender.Items.IndexOf(sender.SelectedItems[0]);
             }
             
-            //return sender.SelectedItems.Count > 0 ? sender.Items.IndexOf(sender.SelectedItems[0]) : -1;
         }
 
-        public static Contact Contact(this ListView sender)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public static Contact ContactByRowIndex(this ListView sender, int index)
         {
-            int index = sender.RowIndex();
-            //if (index == -1)
-            //{
-            //    throw new ArgumentOutOfRangeException();
-            //}
-            
             return (Contact)sender.Items[index].Tag;
         }
+
         
     }
 }

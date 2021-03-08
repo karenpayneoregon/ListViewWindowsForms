@@ -28,23 +28,11 @@ namespace BasicListViewDetailViewExample
         private void OwnerContactListView_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            try
-            {
-                var index = ownerContactListView.RowIndex();
-                if (index > -1)
-                {
-                    var currentContact = (Contact)ownerContactListView.Items[index].Tag;
-                    Console.WriteLine($"Index: {index}, Data: {currentContact}");
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-
-
+            var index = ownerContactListView.RowIndex();
+            if (index <= -1) return;
             
+            Contact currentContact = ownerContactListView.ContactByRowIndex(index);
+            Console.WriteLine($"Index: {index}, Data: {currentContact}");
 
         }
 
@@ -62,35 +50,17 @@ namespace BasicListViewDetailViewExample
             ownerContactListView.BeginUpdate();
             foreach (var contact in contacts)
             {
-
-                ownerContactListView.Items.Add(
-                    new ListViewItem(contact.ItemArray)
-                    {
-                        Tag = contact
-                    });
-
+                ownerContactListView.Items.Add(new ListViewItem(contact.ItemArray) { Tag = contact });
             }
 
             ownerContactListView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
             ownerContactListView.EndUpdate();
 
-            ownerContactListView.AfterLabelEdit += OwnerContactListViewOnAfterLabelEdit;
+            //ownerContactListView.AfterLabelEdit += OwnerContactListViewOnAfterLabelEdit;
 
             // this is how to select the first item
-            //ownerContactListView.FocusedItem = ownerContactListView.Items[0];
-            //ownerContactListView.Items[0].Selected = true;
-
-            /*
-             * This is a hard coded example to find an item and ensure it's visible
-             */
-            var item = ownerContactListView.FindItemWithText("Santé Gourmet");
-
-            if (item != null)
-            {
-                var index = ownerContactListView.Items.IndexOf(item);
-                ownerContactListView.Items[index].Selected = true;
-                ownerContactListView.EnsureVisible(index);
-            }
+            ownerContactListView.FocusedItem = ownerContactListView.Items[0];
+            ownerContactListView.Items[0].Selected = true;
 
             ActiveControl = ownerContactListView;
         }
@@ -139,19 +109,25 @@ namespace BasicListViewDetailViewExample
                     ownerContactListView.Items.Remove(listViewItem));
             }
         }
-        ///// <summary>
-        ///// Shows how to remove selected rows with a prompt when pressing
-        ///// the DEL key.
-        ///// </summary>
-        ///// <param name="msg"></param>
-        ///// <param name="keyData"></param>
-        ///// <returns></returns>
-        //protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        //{
-        //    if (keyData != (Keys.Delete)) return base.ProcessCmdKey(ref msg, keyData);
-        //    DeleteSelectedListViewRows();
-        //    return true;
-        //}
+        /// <summary>
+        /// Shows how to remove selected rows with a prompt when pressing
+        /// the DEL key.
+        /// </summary>
+        /// <param name="msg"></param>
+        /// <param name="keyData"></param>
+        /// <returns></returns>
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (ActiveControl == ownerContactListView)
+            {
+                if (keyData != (Keys.Delete)) return base.ProcessCmdKey(ref msg, keyData);
+                DeleteSelectedListViewRows();
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+
+        }
         /// <summary>
         /// Demo changing a item value
         /// </summary>
