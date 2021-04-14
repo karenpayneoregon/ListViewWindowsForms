@@ -17,6 +17,7 @@ namespace SqlServerOperations
 
         public Dictionary<string, List<ServerTableItem>> TableDependencies()
         {
+            string YesNo(string fieldValue) => fieldValue == "True" ? "Yes" : "No";
             mHasException = false;
 
             var informationTable = new DataTable();
@@ -98,10 +99,10 @@ namespace SqlServerOperations
                         Length = row.Field<short>("Length"),
                         Precision = row.Field<string>("Precision"),
                         Scale = row.Field<int>("Scale"),
-                        AllowNulls = row.Field<string>("AllowNulls"),
-                        Identity = row.Field<string>("Identity"),
-                        PrimaryKey = row.Field<string>("PrimaryKey"),
-                        ForeignKey = row.Field<string>("ForeignKey"),
+                        AllowNulls = YesNo(row.Field<string>("AllowNulls")),
+                        Identity = YesNo(row.Field<string>("Identity")),
+                        PrimaryKey = YesNo(row.Field<string>("PrimaryKey")),
+                        ForeignKey = YesNo(row.Field<string>("ForeignKey")),
                         RelatedTable = row.Field<string>("RelatedTable"),
                         Description = row.Field<string>("Description")
                     });

@@ -12,14 +12,12 @@ namespace SqlServerOperations.Classes
         public string Precision { get; set; }
         public Int32 Scale { get; set; }
         public string AllowNulls { get; set; }
-        public string Identity { get; set; } = String.Empty;
+        public string Identity { get; set; } = string.Empty;
         public string PrimaryKey { get; set; }
-        public string ForeignKey { get; set; } = String.Empty;
+        public string ForeignKey { get; set; } = string.Empty;
         public string RelatedTable { get; set; }
         public string Description { get; set; }
-        public override string ToString()
-        {
-            return Field;
-        }
+        public override string ToString() => Field;
+   
     }
 }
