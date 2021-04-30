@@ -7,7 +7,7 @@
         public string ApplicationVersion { get; set; }
         public string ApplicationKey { get; set; }
         /// <summary>
-        /// Used to load listview items in ListViewJsonExampleForm
+        /// Used to load listView items in ListViewJsonExampleForm
         /// </summary>
         /// <returns></returns>
         public string[] ItemArray()

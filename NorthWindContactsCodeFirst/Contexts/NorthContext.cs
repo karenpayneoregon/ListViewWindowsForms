@@ -24,7 +24,7 @@ namespace NorthWindContactsCodeFirst.Contexts
             if (!optionsBuilder.IsConfigured)
             {
             }
-            optionsBuilder.UseSqlServer("Server=KARENS-PC;Database=NorthWindAzureForInserts;Trusted_Connection=True;");
+            optionsBuilder.UseSqlServer("Server=.\\SQLEXPRESS;Database=NorthWindAzureForInserts;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

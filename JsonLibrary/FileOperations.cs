@@ -19,9 +19,9 @@ namespace JsonLibrary
         public List<Application> LoadApplicationData(string pFileName)
         {
 
-            using (var r = new StreamReader(pFileName))
+            using (var reader = new StreamReader(pFileName))
             {
-                var json = r.ReadToEnd();
+                var json = reader.ReadToEnd();
                 return JsonConvert.DeserializeObject<List<Application>>(json);
             }
 
