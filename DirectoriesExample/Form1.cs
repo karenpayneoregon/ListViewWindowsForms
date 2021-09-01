@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DirectoriesExample.Classes;
 
 namespace DirectoriesExample
 {
@@ -59,40 +58,6 @@ namespace DirectoriesExample
         {
             var current = (ItemDetails) DirectoryListView.SelectedItems[0].Tag;
             MessageBox.Show($"{current.FullName}\n{current.Directory}");
-        }
-    }
-
-    public static class Extensions
-    {
-        public static IEnumerable<FileInfo> GetFilesByExtensions(this DirectoryInfo dir, params string[] extensions) 
-            => dir.EnumerateFiles().Where((f) => extensions.Contains(f.Extension));
-
-    }
-
-    public class ItemDetails
-    {
-        public string Directory { get; set; }
-        public string FullName { get; set; }
-        public string Name { get; set; }
-        public DateTime LastWriteTime { get; set; }
-        public string[] ItemArray => new[] {Name, LastWriteTime.ToString("MM/dd/yyyy")};
-    }
-
-    public class Operations
-    {
-        public static List<ItemDetails> GetFiles(string path, params string[] extensions)
-        {
-            
-            return new DirectoryInfo(path).GetFilesByExtensions(extensions).
-                OrderBy(x => x.Name).
-                Select(info => new ItemDetails()
-                {
-                    Name = info.Name,
-                    Directory = info.DirectoryName, 
-                    FullName = info.FullName, 
-                    LastWriteTime = info.LastWriteTime
-                }).
-                ToList();
         }
     }
 }
