@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.757
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqlServerOperations", "SqlServerOperations\SqlServerOperations.csproj", "{315F1D83-7537-495C-9217-3D997373DF09}"
 EndProject
@@ -30,6 +30,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BasicListViewGroupsExample", "BasicListViewGroupsExample\BasicListViewGroupsExample.csproj", "{4826DE1F-157F-4EFC-BE4C-01C7E231031E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NorthWindContactsCodeFirst", "NorthWindContactsCodeFirst\NorthWindContactsCodeFirst.csproj", "{88FEAF56-DEF8-41B0-BFE7-C628A3D4E382}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DirectoriesExample", "DirectoriesExample\DirectoriesExample.csproj", "{6B633342-E527-4B3E-AB92-D08768805E54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +75,10 @@ Global
 		{88FEAF56-DEF8-41B0-BFE7-C628A3D4E382}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88FEAF56-DEF8-41B0-BFE7-C628A3D4E382}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88FEAF56-DEF8-41B0-BFE7-C628A3D4E382}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B633342-E527-4B3E-AB92-D08768805E54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B633342-E527-4B3E-AB92-D08768805E54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B633342-E527-4B3E-AB92-D08768805E54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B633342-E527-4B3E-AB92-D08768805E54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -87,6 +93,7 @@ Global
 		{2EF9B62C-D1B2-4B80-993F-4F225B3C0254} = {85AACF9C-3D16-443D-99B1-DED81A6B50AB}
 		{4826DE1F-157F-4EFC-BE4C-01C7E231031E} = {85AACF9C-3D16-443D-99B1-DED81A6B50AB}
 		{88FEAF56-DEF8-41B0-BFE7-C628A3D4E382} = {85AACF9C-3D16-443D-99B1-DED81A6B50AB}
+		{6B633342-E527-4B3E-AB92-D08768805E54} = {85AACF9C-3D16-443D-99B1-DED81A6B50AB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {867FC103-C97F-4570-B263-2F9E99477275}
