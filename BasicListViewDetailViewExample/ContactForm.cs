@@ -32,6 +32,10 @@ namespace BasicListViewDetailViewExample
             {
                 Console.WriteLine(ownerContactListView.SelectedItems[0].Text);
             }
+            else
+            {
+                IterateSelectedItems();
+            }
             
         }
 
@@ -129,6 +133,28 @@ namespace BasicListViewDetailViewExample
         {
             ownerContactListView.SelectedItems[0].SubItems[3].Text =
                 ownerContactListView.SelectedItems[0].SubItems[3].Text.Replace("-", "");
+        }
+
+        private void ForumQuestionButton_Click(object sender, EventArgs e)
+        {
+            IterateSelectedItems();
+        }
+
+        private void IterateSelectedItems()
+        {
+            Console.WriteLine();
+            Console.WriteLine(nameof(ForumQuestionButton_Click));
+
+            var items = ownerContactListView.SelectedItems;
+            if (items.Count > 0)
+            {
+                foreach (ListViewItem item in items)
+                {
+                    Console.WriteLine($@"{item.Text,-40}{item.SubItems[1].Text,-20}{item.SubItems[2].Text,-20}");
+                }
+            }
+
+            Console.WriteLine();
         }
     }
 }

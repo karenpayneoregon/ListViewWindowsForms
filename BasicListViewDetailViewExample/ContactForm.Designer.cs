@@ -38,6 +38,7 @@
             this.LastNameColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.PhoneColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CountryColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.ForumQuestionButton = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +54,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.ForumQuestionButton);
             this.panel1.Controls.Add(this.MockedEditButton);
             this.panel1.Controls.Add(this.RemoveSelectedButton);
             this.panel1.Controls.Add(this.ExitButton);
@@ -120,6 +122,16 @@
             // 
             this.CountryColumn.Text = "Country";
             // 
+            // ForumQuestionButton
+            // 
+            this.ForumQuestionButton.Location = new System.Drawing.Point(270, 25);
+            this.ForumQuestionButton.Name = "ForumQuestionButton";
+            this.ForumQuestionButton.Size = new System.Drawing.Size(106, 23);
+            this.ForumQuestionButton.TabIndex = 3;
+            this.ForumQuestionButton.Text = "Forum Question";
+            this.ForumQuestionButton.UseVisualStyleBackColor = true;
+            this.ForumQuestionButton.Click += new System.EventHandler(this.ForumQuestionButton_Click);
+            // 
             // ContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -148,6 +160,7 @@
         private System.Windows.Forms.ColumnHeader CountryColumn;
         private System.Windows.Forms.Button RemoveSelectedButton;
         private System.Windows.Forms.Button MockedEditButton;
+        private System.Windows.Forms.Button ForumQuestionButton;
     }
 }
 
