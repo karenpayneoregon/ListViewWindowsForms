@@ -1,7 +1,8 @@
 ﻿# Basic ListView: DetailView with SQL-Server
 
 A basic example for reading data from SQL-Server, populate and set Tag property to the primary key for the row which allows on selection to get more information on the current row.
-![Image](assets/F1.jpg)
+
+![image](assets/Figure1.png)
 
 Underlying SELECT statement which filters to one contact type.
 ```sql
