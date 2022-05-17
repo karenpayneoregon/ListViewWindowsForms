@@ -39,6 +39,8 @@
             this.PhoneColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.CountryColumn = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.ForumQuestionButton = new System.Windows.Forms.Button();
+            this.AddRowButton = new System.Windows.Forms.Button();
+            this.CountLabel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,19 +56,21 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.CountLabel);
+            this.panel1.Controls.Add(this.AddRowButton);
             this.panel1.Controls.Add(this.ForumQuestionButton);
             this.panel1.Controls.Add(this.MockedEditButton);
             this.panel1.Controls.Add(this.RemoveSelectedButton);
             this.panel1.Controls.Add(this.ExitButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 245);
+            this.panel1.Location = new System.Drawing.Point(0, 422);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(566, 70);
             this.panel1.TabIndex = 1;
             // 
             // MockedEditButton
             // 
-            this.MockedEditButton.Location = new System.Drawing.Point(136, 25);
+            this.MockedEditButton.Location = new System.Drawing.Point(12, 35);
             this.MockedEditButton.Name = "MockedEditButton";
             this.MockedEditButton.Size = new System.Drawing.Size(106, 23);
             this.MockedEditButton.TabIndex = 2;
@@ -76,7 +80,7 @@
             // 
             // RemoveSelectedButton
             // 
-            this.RemoveSelectedButton.Location = new System.Drawing.Point(13, 25);
+            this.RemoveSelectedButton.Location = new System.Drawing.Point(12, 6);
             this.RemoveSelectedButton.Name = "RemoveSelectedButton";
             this.RemoveSelectedButton.Size = new System.Drawing.Size(106, 23);
             this.RemoveSelectedButton.TabIndex = 1;
@@ -97,7 +101,7 @@
             this.ownerContactListView.HideSelection = false;
             this.ownerContactListView.Location = new System.Drawing.Point(0, 0);
             this.ownerContactListView.Name = "ownerContactListView";
-            this.ownerContactListView.Size = new System.Drawing.Size(566, 245);
+            this.ownerContactListView.Size = new System.Drawing.Size(566, 422);
             this.ownerContactListView.TabIndex = 2;
             this.ownerContactListView.UseCompatibleStateImageBehavior = false;
             this.ownerContactListView.View = System.Windows.Forms.View.Details;
@@ -124,7 +128,7 @@
             // 
             // ForumQuestionButton
             // 
-            this.ForumQuestionButton.Location = new System.Drawing.Point(270, 25);
+            this.ForumQuestionButton.Location = new System.Drawing.Point(137, 6);
             this.ForumQuestionButton.Name = "ForumQuestionButton";
             this.ForumQuestionButton.Size = new System.Drawing.Size(106, 23);
             this.ForumQuestionButton.TabIndex = 3;
@@ -132,11 +136,30 @@
             this.ForumQuestionButton.UseVisualStyleBackColor = true;
             this.ForumQuestionButton.Click += new System.EventHandler(this.ForumQuestionButton_Click);
             // 
+            // AddRowButton
+            // 
+            this.AddRowButton.Location = new System.Drawing.Point(137, 35);
+            this.AddRowButton.Name = "AddRowButton";
+            this.AddRowButton.Size = new System.Drawing.Size(106, 23);
+            this.AddRowButton.TabIndex = 4;
+            this.AddRowButton.Text = "Add mocked";
+            this.AddRowButton.UseVisualStyleBackColor = true;
+            this.AddRowButton.Click += new System.EventHandler(this.AddRowButton_Click);
+            // 
+            // CountLabel
+            // 
+            this.CountLabel.AutoSize = true;
+            this.CountLabel.Location = new System.Drawing.Point(261, 40);
+            this.CountLabel.Name = "CountLabel";
+            this.CountLabel.Size = new System.Drawing.Size(35, 13);
+            this.CountLabel.TabIndex = 5;
+            this.CountLabel.Text = "Count";
+            // 
             // ContactForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(566, 315);
+            this.ClientSize = new System.Drawing.Size(566, 492);
             this.Controls.Add(this.ownerContactListView);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -144,6 +167,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contacts -Owners";
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -160,7 +184,9 @@
         private System.Windows.Forms.ColumnHeader CountryColumn;
         private System.Windows.Forms.Button RemoveSelectedButton;
         private System.Windows.Forms.Button MockedEditButton;
+        private System.Windows.Forms.Button AddRowButton;
         private System.Windows.Forms.Button ForumQuestionButton;
+        private System.Windows.Forms.Label CountLabel;
     }
 }
 

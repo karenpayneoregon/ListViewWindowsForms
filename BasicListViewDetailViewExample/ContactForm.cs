@@ -19,11 +19,14 @@ namespace BasicListViewDetailViewExample
         public ContactForm()
         {
             InitializeComponent();
+
+            ownerContactListView.MultiSelect = false;
+
             Shown += Form1_Shown;
 
             ownerContactListView.MouseDoubleClick += ListView1_MouseDoubleClick;
             ownerContactListView.SelectedIndexChanged += OwnerContactListView_SelectedIndexChanged;
-
+            
         }
 
         private void OwnerContactListView_SelectedIndexChanged(object sender, EventArgs e)
@@ -81,6 +84,7 @@ namespace BasicListViewDetailViewExample
                 ownerContactListView.EnsureVisible(index);
             }
 
+            CountLabel.Text = $@"Row count: {ownerContactListView.Items.Count}";
             ActiveControl = ownerContactListView;
         }
 
@@ -154,7 +158,35 @@ namespace BasicListViewDetailViewExample
                 }
             }
 
-            Console.WriteLine();
+        }
+
+        private void AddRowButton_Click(object sender, EventArgs e)
+        {
+            var companyName = "Just added";
+
+            Contact contact = new Contact()
+            {
+                CompanyName = companyName,
+                FirstName = "Karen",
+                LastName = "Payne",
+                PhoneNumber = "123-333-4444",
+                CountryName = "USA"
+            };
+
+            ownerContactListView.Items.Add(
+                new ListViewItem(contact.ItemArray)
+                {
+                    Tag = contact.CustomerIdentifier
+                });
+
+            CountLabel.Text = $@"Row count: {ownerContactListView.Items.Count}";
+
+            var index = ownerContactListView.Items.IndexOf(
+                ownerContactListView.FindItemWithText(companyName));
+
+            ownerContactListView.Items[index].Selected = true;
+            ownerContactListView.EnsureVisible(index);
+            ActiveControl = ownerContactListView;
         }
     }
 }
