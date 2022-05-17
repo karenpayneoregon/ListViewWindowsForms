@@ -52,3 +52,7 @@ private void Form1_Shown(object sender, EventArgs e)
 
 }
 ```
+
+After clicking the mock add button
+
+![image](assets/Figure2.png)
