@@ -2,6 +2,7 @@
 
 ![image](assets/F2.jpg)
 
+
 This example shows how to load a Json file into a ListView along with the ability to move rows up and down.
 
 **See also:** 
